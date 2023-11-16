@@ -3,10 +3,14 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
-import { testConnection } from '../../api/dbConfig'
+import { sequelize, testConnection } from '../../api/dbConfig'
 import ipcHandler from './ipcMain'
 
-testConnection()
+// testConnection()
+sequelize
+  .sync()
+  .then(() => console.log('Database ready!'))
+  .catch((error) => console.log(error))
 
 function createWindow() {
   // Create the browser window.
@@ -17,7 +21,7 @@ function createWindow() {
     autoHideMenuBar: true,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
-      preload: join(__dirname, '../preload/index.cjs'),
+      preload: join(__dirname, '../preload/index.js'),
       sandbox: false
     }
   })

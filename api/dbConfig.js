@@ -1,7 +1,14 @@
-// const { Sequelize } = require('sequelize')
 import { Sequelize } from 'sequelize'
 
-var sequelize = new Sequelize(
+import MembersModel from './models/members'
+import MaritalStatusModel from './models/maritalStatus'
+import MembershipModel from './models/membership'
+import SocietyModel from './models/society'
+import SectionModel from './models/section'
+import UsersModel from './models/users'
+import ChurchModel from './models/church'
+
+const sequelize = new Sequelize(
   import.meta.env.MAIN_VITE_DBName,
   import.meta.env.MAIN_VITE_DBusername,
   import.meta.env.MAIN_VITE_DBPassword,
@@ -26,15 +33,42 @@ var sequelize = new Sequelize(
   }
 )
 
-async function testConnection() {
-  try {
-    await sequelize.authenticate()
-    console.log('Connection has been established successfully.')
-  } catch (error) {
-    console.error('Unable to connect to the database:', error)
-  }
-}
+// function createModels() {
+const Members = MembersModel(sequelize)
+const MaritalStatus = MaritalStatusModel(sequelize)
+const Membership = MembershipModel(sequelize)
+const Society = SocietyModel(sequelize)
+const Section = SectionModel(sequelize)
+const Users = UsersModel(sequelize)
+const Church = ChurchModel(sequelize)
 
+// Associations
+MaritalStatus.hasMany(Members)
+Members.belongsTo(MaritalStatus)
+
+Membership.hasMany(Members)
+Members.belongsTo(Membership)
+
+Society.hasMany(Members)
+Members.belongsTo(Society)
+
+Section.hasMany(Members)
+Members.belongsTo(Section)
+
+// return
+// }
+
+// createModels()
+
+// // # test connection
+// async function testConnection() {
+//   try {
+//     await sequelize.authenticate()
+//     console.log('Connection has been established successfully.')
+//   } catch (error) {
+//     console.error('Unable to connect to the database:', error)
+//   }
+// }
 // testConnection()
 
-export { sequelize, testConnection }
+export { sequelize, Members, MaritalStatus, Membership, Society, Section, Users, Church }
