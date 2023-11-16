@@ -1,0 +1,22 @@
+@import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+/* @import "../../../../node_modules//bootstrap" */
+
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+#loginCard {
+  width: 50%;
+  margin: auto;
+  /* align-items: center; */
+}
+
+li {
+  cursor: pointer;
+}
+
+input {
+  margin-bottom: 20px;
+}
