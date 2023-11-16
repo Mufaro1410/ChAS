@@ -31,8 +31,8 @@ export default function Members() {
   }
 
   useEffect(() => {
-    // getMembers()
-    // getTables()
+    getMembers()
+    getTables()
   }, [])
 
   const updateMemberState = (method, memberData) => {

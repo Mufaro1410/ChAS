@@ -9,7 +9,7 @@ import ipcHandler from './ipcMain'
 // testConnection()
 sequelize
   .sync()
-  .then(() => console.log('Database ready!'))
+  .then(() => console.log('Database is ready!'))
   .catch((error) => console.log(error))
 
 function createWindow() {

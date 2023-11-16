@@ -1,8 +1,8 @@
-import { UsersModel } from '../models/users'
+import { Users } from '../dbConfig'
 // import { passwordEncrpt } from '../../src/renderer/assets/js/login';
 
 const createUserTable = async () => {
-  const res = await UsersModel.sync()
+  const res = await Users.sync()
   return res
   // console.log(res);
 }
@@ -10,7 +10,7 @@ const createUserTable = async () => {
 // createUserTable()
 
 const dropUserTable = async () => {
-  const res = await UsersModel.drop()
+  const res = await Users.drop()
   return res
   // console.log(res);
 }
@@ -21,7 +21,7 @@ const addUser = async (data) => {
     const hashedPassword = await passwordEncrpt(userPassword)
     data.password = hashedPassword
     console.log(data)
-    const res = await UsersModel.create(data)
+    const res = await Users.create(data)
     return res.toJSON()
   } catch (error) {
     return error
@@ -30,7 +30,7 @@ const addUser = async (data) => {
 
 const getUsers = async () => {
   try {
-    const res = await UsersModel.findAll()
+    const res = await Users.findAll()
     const data = res.map((user) => user.dataValues)
     return data
   } catch (error) {
@@ -40,7 +40,7 @@ const getUsers = async () => {
 
 const getUser = async (id) => {
   try {
-    const user = await UsersModel.findByPk(id)
+    const user = await Users.findByPk(id)
     if (!user) {
       return { message: 'User not found' }
     }
@@ -52,7 +52,7 @@ const getUser = async (id) => {
 
 const updateUser = async (id, data) => {
   try {
-    const user = await UsersModel.findByPk(id)
+    const user = await Users.findByPk(id)
     if (!user) {
       return { message: 'User not found' }
     }
@@ -66,7 +66,7 @@ const updateUser = async (id, data) => {
 
 const removeUser = async (id) => {
   try {
-    const user = await UsersModel.findByPk(id)
+    const user = await Users.findByPk(id)
     if (!user) {
       return { message: 'User not found' }
     }

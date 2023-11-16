@@ -12,7 +12,7 @@ function Society() {
   }
 
   useEffect(() => {
-    // getSocieties()
+    getSocieties()
   }, [])
 
   const createSociety = async () => {

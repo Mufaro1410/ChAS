@@ -12,7 +12,7 @@ function Section() {
   }
 
   useEffect(() => {
-    // getSections()
+    getSections()
   }, [])
 
   const createSection = async () => {

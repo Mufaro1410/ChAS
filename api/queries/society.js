@@ -1,14 +1,14 @@
-import { SocietyModel } from '../models/society'
+import { Society } from '../dbConfig'
 
 // Creating table
 const createSocietyTable = async () => {
-  const res = await SocietyModel.sync()
+  const res = await Society.sync()
   return res
 }
 
 // Dropping table
 const dropSocietyTable = async () => {
-  const res = await SocietyModel.drop()
+  const res = await Society.drop()
   return res
 }
 
@@ -16,7 +16,7 @@ const dropSocietyTable = async () => {
 const addSociety = async (data) => {
   try {
     // const { firstname, lastname, username, password } = data
-    const res = await SocietyModel.create(data)
+    const res = await Society.create(data)
     return res.toJSON()
   } catch (error) {
     return error.toJSON()
@@ -25,7 +25,7 @@ const addSociety = async (data) => {
 
 const getSocieties = async () => {
   try {
-    const res = await SocietyModel.findAll()
+    const res = await Society.findAll()
     const data = res.map((society) => society.dataValues)
     return data
   } catch (error) {
@@ -35,7 +35,7 @@ const getSocieties = async () => {
 
 const getSociety = async (id) => {
   try {
-    const society = await SocietyModel.findByPk(id)
+    const society = await Society.findByPk(id)
     // console.log(status);
     if (!society) {
       return { message: 'Society not found' }
@@ -48,7 +48,7 @@ const getSociety = async (id) => {
 
 const updateSociety = async (id, data) => {
   try {
-    const society = await SocietyModel.findByPk(id)
+    const society = await Society.findByPk(id)
     if (!society) {
       return { message: 'Society not found' }
     }
@@ -62,7 +62,7 @@ const updateSociety = async (id, data) => {
 
 const removeSociety = async (id) => {
   try {
-    const society = await SocietyModel.findByPk(id)
+    const society = await Society.findByPk(id)
     if (!society) {
       return { message: 'Society not found' }
     }

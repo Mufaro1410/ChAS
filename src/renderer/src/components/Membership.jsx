@@ -12,7 +12,7 @@ function Membership() {
   }
 
   useEffect(() => {
-    // getMemberships()
+    getMemberships()
   }, [])
 
   const createMembership = async () => {

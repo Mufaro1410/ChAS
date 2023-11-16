@@ -1,48 +1,17 @@
-import { addChurch, getChurch, updateChurch, deleteChurch } from '../../api/models/churchModel'
-import { addUser, getUsers, getUser, updateUser, removeUser } from '../../api/models/usersModel'
-import {
-  addMembers,
-  addMember,
-  readMembers,
-  readMember,
-  patchMember,
-  removeMember
-} from '../../api/models/memberModel'
-import {
-  addMaritalStatus,
-  getMaritalStatuses,
-  getMaritalStatus,
-  updateMaritalStatus,
-  removeMaritalStatus
-} from '../../api/models/maritalStatusModel'
-import {
-  addMembership,
-  getMemberships,
-  getMembership,
-  updateMembership,
-  removeMembership
-} from '../../api/models/membershipModel'
-import {
-  addSociety,
-  getSocieties,
-  getSociety,
-  updateSociety,
-  removeSociety
-} from '../../api/models/societyModel'
-import {
-  addSection,
-  getSections,
-  getSection,
-  updateSection,
-  removeSection
-} from '../../api/models/sectionModel'
-import { getStats } from '../../api/reports/statistics'
+import { addChurch, getChurch, updateChurch, deleteChurch } from '../../api/queries/church'
+import { addUser, getUsers, getUser, updateUser, removeUser } from '../../api/queries/users'
+import { addMembers, addMember, readMembers, readMember, patchMember, removeMember } from '../../api/queries/members'
+import { addMaritalStatus, getMaritalStatuses, getMaritalStatus, updateMaritalStatus, removeMaritalStatus } from '../../api/queries/maritalStatus'
+import { addMembership, getMemberships, getMembership, updateMembership, removeMembership } from '../../api/queries/memberships'
+import { addSociety, getSocieties, getSociety, updateSociety, removeSociety } from '../../api/queries/society'
+import { addSection, getSections, getSection, updateSection, removeSection } from '../../api/queries/sections'
+// import { getStats } from '../../api/reports/statistics'
 
 export default async function ipcHandler(path, data) {
   switch (path) {
-    // Reports cases
-    case 'statistics':
-      return await getStats()
+    // // Reports cases
+    // case 'statistics':
+    //   return await getStats()
 
     // User cases
     case 'addUser':

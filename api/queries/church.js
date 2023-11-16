@@ -1,16 +1,16 @@
-import { ChurchModel } from '../models/church'
+import { Church } from '../dbConfig'
 
 const createChurchTable = async () => {
-  return await ChurchModel.sync()
+  return await Church.sync()
 }
 
 const dropChurchTable = async () => {
-  return await ChurchModel.drop()
+  return await Church.drop()
 }
 
 const addChurch = async (data) => {
   try {
-    const church = await ChurchModel.create(data)
+    const church = await Church.create(data)
     return church.toJSON()
   } catch (error) {
     console.error(error)
@@ -20,7 +20,7 @@ const addChurch = async (data) => {
 
 const getChurch = async (id) => {
   try {
-    const church = await ChurchModel.findByPk(id)
+    const church = await Church.findByPk(id)
     if (!church) {
       return { message: 'Register' }
     }
@@ -33,7 +33,7 @@ const getChurch = async (id) => {
 
 const updateChurch = async (id, data) => {
   try {
-    const church = await ChurchModel.findByPk(id)
+    const church = await Church.findByPk(id)
     if (!church) {
       return { message: 'Register' }
     }
@@ -47,7 +47,7 @@ const updateChurch = async (id, data) => {
 
 const deleteChurch = async (id) => {
   try {
-    const church = await ChurchModel.findByPk(id)
+    const church = await Church.findByPk(id)
     if (!church) {
       return { message: 'Not found' }
     }

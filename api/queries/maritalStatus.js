@@ -1,13 +1,13 @@
-import { MaritalStatusModel } from '../models/maritalStatus'
+import { MaritalStatus } from '../dbConfig'
 
 const createMaritalStatusTable = async () => {
-  const res = await MaritalStatusModel.sync()
+  const res = await MaritalStatus.sync()
   return res
 }
 
 // Dropping table
 const dropMaritalStatusTable = async () => {
-  const res = await MaritalStatusModel.drop()
+  const res = await MaritalStatus.drop()
   return res
 }
 
@@ -15,7 +15,7 @@ const dropMaritalStatusTable = async () => {
 const addMaritalStatus = async (data) => {
   try {
     // const { firstname, lastname, username, password } = data
-    const res = await MaritalStatusModel.create(data)
+    const res = await MaritalStatus.create(data)
     return res.toJSON()
   } catch (error) {
     return error.toJSON()
@@ -24,7 +24,7 @@ const addMaritalStatus = async (data) => {
 
 const getMaritalStatuses = async () => {
   try {
-    const res = await MaritalStatusModel.findAll()
+    const res = await MaritalStatus.findAll()
     const data = res.map((status) => status.dataValues)
     return data
   } catch (error) {
@@ -34,7 +34,7 @@ const getMaritalStatuses = async () => {
 
 const getMaritalStatus = async (id) => {
   try {
-    const status = await MaritalStatusModel.findByPk(id)
+    const status = await MaritalStatus.findByPk(id)
     // console.log(status);
     if (!status) {
       return { message: 'Status not found' }
@@ -47,7 +47,7 @@ const getMaritalStatus = async (id) => {
 
 const updateMaritalStatus = async (id, data) => {
   try {
-    const status = await MaritalStatusModel.findByPk(id)
+    const status = await MaritalStatus.findByPk(id)
     if (!status) {
       return { message: 'Status not found' }
     }
@@ -61,7 +61,7 @@ const updateMaritalStatus = async (id, data) => {
 
 const removeMaritalStatus = async (id) => {
   try {
-    const status = await MaritalStatusModel.findByPk(id)
+    const status = await MaritalStatus.findByPk(id)
     if (!status) {
       return { message: 'Status not found' }
     }

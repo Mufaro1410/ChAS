@@ -1,6 +1,6 @@
 // import { readFile } from 'fs';
 import { useState } from 'react'
-// import * as xlsx from 'xlsx'
+import * as xlsx from 'xlsx'
 
 function AddMembers() {
   const [fileJSON, setFileJSON] = useState([])

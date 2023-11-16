@@ -12,7 +12,7 @@ function MaritalStatus() {
   }
 
   useEffect(() => {
-    // getMaritalStatuses()
+    getMaritalStatuses()
   }, [])
 
   const createMaritalStatus = async () => {

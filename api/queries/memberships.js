@@ -1,14 +1,14 @@
-import { MembershipModel } from '../models/membership'
+import { Membership } from '../dbConfig'
 
 // Creating table
 const createMembershipTable = async () => {
-  const res = await MembershipModel.sync()
+  const res = await Membership.sync()
   return res
 }
 
 // Dropping table
 const dropMembershipTable = async () => {
-  const res = await MembershipModel.drop()
+  const res = await Membership.drop()
   return res
 }
 
@@ -16,7 +16,7 @@ const dropMembershipTable = async () => {
 const addMembership = async (data) => {
   try {
     // const { firstname, lastname, username, password } = data
-    const res = await MembershipModel.create(data)
+    const res = await Membership.create(data)
     return res.toJSON()
   } catch (error) {
     console.log(error)
@@ -26,7 +26,7 @@ const addMembership = async (data) => {
 
 const getMemberships = async () => {
   try {
-    const res = await MembershipModel.findAll()
+    const res = await Membership.findAll()
     const data = res.map((membership) => membership.dataValues)
     return data
   } catch (error) {
@@ -36,7 +36,7 @@ const getMemberships = async () => {
 
 const getMembership = async (id) => {
   try {
-    const membership = await MembershipModel.findByPk(id)
+    const membership = await Membership.findByPk(id)
     // console.log(status);
     if (!membership) {
       return { message: 'Membership not found' }
@@ -49,7 +49,7 @@ const getMembership = async (id) => {
 
 const updateMembership = async (id, data) => {
   try {
-    const membership = await MembershipModel.findByPk(id)
+    const membership = await Membership.findByPk(id)
     if (!membership) {
       return { message: 'Membership not found' }
     }
@@ -63,7 +63,7 @@ const updateMembership = async (id, data) => {
 
 const removeMembership = async (id) => {
   try {
-    const membership = await MembershipModel.findByPk(id)
+    const membership = await Membership.findByPk(id)
     if (!membership) {
       return { message: 'Membership not found' }
     }

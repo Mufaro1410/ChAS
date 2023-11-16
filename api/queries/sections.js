@@ -1,14 +1,14 @@
-import { SectionModel } from '../models/section'
+import { Section } from '../dbConfig'
 
 // Creating table
 const createSectionTable = async () => {
-  const res = await SectionModel.sync()
+  const res = await Section.sync()
   return res
 }
 
 // Dropping table
 const dropSectionTable = async () => {
-  const res = await SectionModel.drop()
+  const res = await Section.drop()
   return res
 }
 
@@ -16,7 +16,7 @@ const dropSectionTable = async () => {
 const addSection = async (data) => {
   try {
     // const { firstname, lastname, username, password } = data
-    const res = await SectionModel.create(data)
+    const res = await Section.create(data)
     return res.toJSON()
   } catch (error) {
     return error.toJSON()
@@ -25,7 +25,7 @@ const addSection = async (data) => {
 
 const getSections = async () => {
   try {
-    const res = await SectionModel.findAll()
+    const res = await Section.findAll()
     const data = res.map((section) => section.dataValues)
     return data
   } catch (error) {
@@ -35,7 +35,7 @@ const getSections = async () => {
 
 const getSection = async (id) => {
   try {
-    const section = await SectionModel.findByPk(id)
+    const section = await Section.findByPk(id)
     // console.log(status);
     if (!section) {
       return { message: 'Section not found' }
@@ -48,7 +48,7 @@ const getSection = async (id) => {
 
 const updateSection = async (id, data) => {
   try {
-    const section = await SectionModel.findByPk(id)
+    const section = await Section.findByPk(id)
     if (!section) {
       return { message: 'Section not found' }
     }
@@ -62,7 +62,7 @@ const updateSection = async (id, data) => {
 
 const removeSection = async (id) => {
   try {
-    const section = await SectionModel.findByPk(id)
+    const section = await Section.findByPk(id)
     if (!section) {
       return { message: 'Section not found' }
     }
